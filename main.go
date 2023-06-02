@@ -84,6 +84,7 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 func Welcome(w http.ResponseWriter, r *http.Request) {
 	// We can obtain the session token from the requests cookies, which come with every request
 	c, err := r.Cookie("session_token")
+
 	if err != nil {
 		if err == http.ErrNoCookie { // http has ErrNoCookie error method inbuilt
 			// If the cookie is not set, return an unauthorized status
@@ -95,6 +96,7 @@ func Welcome(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	sessionToken := c.Value
+	fmt.Println("Session token to welcome user ", sessionToken)
 
 	// We then get the session from our session map
 	userSession, exists := sessions[sessionToken]
@@ -163,6 +165,7 @@ func Refresh(w http.ResponseWriter, r *http.Request) {
 
 func Logout(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session_token")
+
 	if err != nil {
 		if err == http.ErrNoCookie {
 			// If the cookie is not set, return an unauthorized status
@@ -174,6 +177,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	sessionToken := c.Value
+	fmt.Println("Session token to be logged out is ", sessionToken)
 
 	// remove the users session from the session map
 	delete(sessions, sessionToken)

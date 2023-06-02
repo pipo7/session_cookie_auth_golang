@@ -12,7 +12,7 @@ Will define a Refresh HTTP handler to renew the users session token every time t
 # Testing
 Ensure that http webserver port 8081 is allowed on the firewall
 
-in POSTMAN or http client fire the query..
+In POSTMAN or http client fire the query..
 POST http://10.xxx.xx.97:8081/signin with body 
 {
   "username": "user1",
