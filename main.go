@@ -103,6 +103,7 @@ func Welcome(w http.ResponseWriter, r *http.Request) {
 	if !exists {
 		// If the session token is not present in session map, return an unauthorized error
 		w.WriteHeader(http.StatusUnauthorized)
+		fmt.Println("session token does not exists")
 		return
 	}
 	// If the session is present, but has expired, we can delete the session, and return
@@ -110,6 +111,7 @@ func Welcome(w http.ResponseWriter, r *http.Request) {
 	if userSession.isExpired() {
 		delete(sessions, sessionToken) // delete is inbuilt method to delete value from map searched by key
 		w.WriteHeader(http.StatusUnauthorized)
+		fmt.Println("session token is expired")
 		return
 	}
 	// If the session is valid, return the welcome message to the user

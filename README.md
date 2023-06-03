@@ -35,3 +35,10 @@ Response: New Session Token is  31602044-525c-41e6-97c2-4da64435b5f5
 For logout
 GET http://10.xxx.xx.97:8081/logout
 Calling the welcome and refresh routes after this will result in a 401 error.
+
+
+You can also test from Browser Chrome using 
+Extension to add/save/udpate Cookie : Cookie-Editor
+and using POST data extension to post JSON payload or use python or Golang or postman
+
+NOTE: Session_Token may expire after sometime and you would get error on its expiry
